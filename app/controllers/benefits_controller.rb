@@ -1,5 +1,5 @@
 class BenefitsController < ApplicationController
-  before_action :set_benefit, only: [:show, :edit, :update, :destroy]
+  before_action :set_benefit, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /benefits
   # GET /benefits.json
