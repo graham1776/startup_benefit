@@ -1,0 +1,15 @@
+<%= simple_form_for(@reccomendation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :benefit %>
+    <%= f.input :name %>
+    <%= f.input :copy %>
+    <%= f.input :url %>
+    <%= f.input :favicon_url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

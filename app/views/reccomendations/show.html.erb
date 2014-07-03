@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Benefit:</strong>
+  <%= @reccomendation.benefit %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @reccomendation.name %>
+</p>
+
+<p>
+  <strong>Copy:</strong>
+  <%= @reccomendation.copy %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @reccomendation.url %>
+</p>
+
+<p>
+  <strong>Favicon url:</strong>
+  <%= @reccomendation.favicon_url %>
+</p>
+
+<%= link_to 'Edit', edit_reccomendation_path(@reccomendation) %> |
+<%= link_to 'Back', reccomendations_path %>
