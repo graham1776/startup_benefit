@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Benefit -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Benefit %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @benefit.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @benefit.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:copy) %></dt>
+      <dd><pre class="prettyprint"><%= @benefit.copy %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @benefit.category %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              benefits_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_benefit_path(@benefit), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              benefit_path(@benefit),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Copy:</strong>
-  <%= @benefit.copy %>
-</p>
-
-<%= link_to 'Edit', edit_benefit_path(@benefit) %> |
-<%= link_to 'Back', benefits_path %>

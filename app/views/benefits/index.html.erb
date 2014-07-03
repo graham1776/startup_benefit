@@ -1,29 +1,38 @@
-<h1>Listing benefits</h1>
-
-<table>
+<%- model_class = Benefit -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Benefit %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Copy</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:copy) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @benefits.each do |benefit| %>
       <tr>
+        <td><%= benefit.id %></td>
         <td><%= benefit.name %></td>
-        <td><%= benefit.category %></td>
         <td><%= benefit.copy %></td>
-        <td><%= link_to 'Show', benefit %></td>
-        <td><%= link_to 'Edit', edit_benefit_path(benefit) %></td>
-        <td><%= link_to 'Destroy', benefit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l benefit.created_at, format: :long %></td>
+        <td>
+          <%= link_to benefit_path(benefit), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to benefit_path(benefit), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Benefit', new_benefit_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_benefit_path,
+            :class => 'btn btn-primary' %>

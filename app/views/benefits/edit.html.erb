@@ -1,6 +1,5 @@
-<h1>Editing benefit</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @benefit %> |
-<%= link_to 'Back', benefits_path %>
+<%- model_class = Benefit -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Benefit %></h1>
+</div>
+<%= render :partial => 'form' %>
